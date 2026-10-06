@@ -2,6 +2,7 @@ using UnityEngine;
 
 namespace FallGuyClone
 {
+    /// <summary>Layer numbers used by the game (built-in layers, so no Tags &amp; Layers setup is needed).</summary>
     public static class Layers
     {
         /// <summary>Moving obstacles. The camera ignores this layer so it does not jitter.</summary>

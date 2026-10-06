@@ -93,7 +93,7 @@ namespace FallGuyClone
 
             // ----- Main menu -----
             menuPanel = Panel("Menu", transform, new Color(0.25f, 0.12f, 0.45f, 0.55f)).gameObject;
-            var title = Label(menuPanel.transform, "BEAN DASH", 150, Art.Yellow);
+            var title = Label(menuPanel.transform, "FALL GUY CLONE", 150, Art.Yellow);
             Place(title.rectTransform, new Vector2(0.5f, 0.5f), new Vector2(0f, 300f), new Vector2(1400f, 200f));
             var sub = Label(menuPanel.transform, "Dodge the obstacles and reach the FINISH before time runs out!", 36, Color.white);
             Place(sub.rectTransform, new Vector2(0.5f, 0.5f), new Vector2(0f, 180f), new Vector2(1400f, 60f));

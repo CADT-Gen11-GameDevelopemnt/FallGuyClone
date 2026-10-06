@@ -28,6 +28,7 @@ namespace FallGuyClone
         PlayableGraph graph;
         AnimationMixerPlayable mixer;
         AnimationClipPlayable[] playables;
+        AnimationClip[] foundClips;
         Animation legacyAnimation;
         float[] weights;
         int current = -1;
@@ -99,7 +100,7 @@ namespace FallGuyClone
                     if (legacyAnimation.GetClip(found[i].name) == null) legacyAnimation.AddClip(found[i], found[i].name);
                     legacyAnimation[found[i].name].wrapMode = Loops[i] ? WrapMode.Loop : WrapMode.ClampForever;
                 }
-                ClipNamesFound = found;
+                foundClips = found;
                 return;
             }
 
@@ -127,7 +128,7 @@ namespace FallGuyClone
                 graph.Connect(playables[i], 0, mixer, i);
                 mixer.SetInputWeight(i, 0f);
             }
-            ClipNamesFound = found;
+            foundClips = found;
             current = -1;
             SetPose(Pose.Idle, true);
             weights[(int)Pose.Idle] = 1f;
@@ -135,17 +136,15 @@ namespace FallGuyClone
             graph.Play();
         }
 
-        AnimationClip[] ClipNamesFound;
-
         public void SetPose(Pose pose, bool restart = false)
         {
             int i = (int)pose;
             if (i == current && !restart) return;
             current = i;
 
-            if (legacyAnimation != null && ClipNamesFound != null)
+            if (legacyAnimation != null && foundClips != null)
             {
-                var clip = ClipNamesFound[i] != null ? ClipNamesFound[i] : ClipNamesFound[0];
+                var clip = foundClips[i] != null ? foundClips[i] : foundClips[0];
                 if (restart) legacyAnimation.Stop(clip.name);
                 legacyAnimation.CrossFade(clip.name, 0.15f);
                 return;
@@ -206,7 +205,7 @@ namespace FallGuyClone
             if (graph.IsValid()) graph.Destroy();
             playables = null;
             legacyAnimation = null;
-            ClipNamesFound = null;
+            foundClips = null;
             current = -1;
             if (visualRoot != null) Art.SafeDestroy(visualRoot.gameObject);
             visualRoot = null;

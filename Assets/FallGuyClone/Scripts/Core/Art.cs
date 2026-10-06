@@ -4,7 +4,7 @@ using UnityEngine;
 namespace FallGuyClone
 {
     /// <summary>
-    /// Loads the free Kenney "Platformer Kit" models from Resources/Kenney and builds
+    /// Loads the free Kenney "Platformer Kit" models from FallGuyClone/Resources/Kenney and builds
     /// coloured materials. Every helper falls back to Unity primitives when a model is missing,
     /// so the game still runs without the asset pack.
     /// </summary>

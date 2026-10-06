@@ -8,17 +8,18 @@ using UnityEngine.SceneManagement;
 namespace FallGuyClone.EditorTools
 {
     /// <summary>
-    /// Creates the materials and the game scene the first time the project compiles,
-    /// and adds the scene to Build Settings. Also available from the "Fall Guy Clone" menu.
+    /// Creates the materials and the game scene the first time the project compiles
+    /// (only when the scene is missing), and adds the scene to Build Settings.
+    /// Use the "Fall Guy Clone" menu to rebuild the scene from code.
     /// </summary>
     [InitializeOnLoad]
     public static class FallGuySetup
     {
-        public const string ScenePath = "Assets/Scenes/FallGuyCourse.unity";
-        const string BaseMaterialPath = "Assets/Resources/FallGuyBase.mat";
-        const string KenneyMaterialPath = "Assets/Resources/FallGuyKenney.mat";
-        const string SkyMaterialPath = "Assets/FallGuyClone/FallGuySky.mat";
-        const string ColormapPath = "Assets/Resources/Kenney/Textures/colormap.png";
+        public const string ScenePath = "Assets/FallGuyClone/Scenes/FallGuyCourse.unity";
+        const string BaseMaterialPath = "Assets/FallGuyClone/Resources/FallGuyBase.mat";
+        const string KenneyMaterialPath = "Assets/FallGuyClone/Resources/FallGuyKenney.mat";
+        const string SkyMaterialPath = "Assets/FallGuyClone/Materials/FallGuySky.mat";
+        const string ColormapPath = "Assets/FallGuyClone/Resources/Kenney/Textures/colormap.png";
 
         static FallGuySetup()
         {
@@ -29,8 +30,7 @@ namespace FallGuyClone.EditorTools
         {
             if (Application.isBatchMode || EditorApplication.isPlayingOrWillChangePlaymode) return;
             EnsureAssets();
-            // Recreate scenes made by the first version, which only held the bootstrap object.
-            if (File.Exists(ScenePath) && File.ReadAllText(ScenePath).Contains("m_Name: Course")) return;
+            if (File.Exists(ScenePath)) return;
             if (SceneManager.GetActiveScene().isDirty)
             {
                 Debug.Log("[Fall Guy Clone] Save your scene, then use menu 'Fall Guy Clone > Create Game Scene'.");
