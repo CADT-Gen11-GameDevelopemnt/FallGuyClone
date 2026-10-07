@@ -6,6 +6,12 @@ Run, jump and dive past spinning bars, wrecking balls, rolling barrels and falli
 
 This is the first project of the class. Use it to practise how to **clone**, **open**, **run** and **build** a Unity project.
 
+![Gameplay: from the start line to QUALIFIED](Docs/Images/gameplay.gif)
+
+| Main menu | In game |
+|---|---|
+| ![Main menu](Docs/Images/menu.jpg) | ![Wrecking-ball bridge](Docs/Images/gameplay.jpg) |
+
 ---
 
 ## 1. Requirements
@@ -79,6 +85,10 @@ git clone https://github.com/hlycadt/FallGuyClone.git
 
 If you fall into the pink goo, you go back to the last checkpoint.
 
+| Course from above: wrecking-ball bridge (front) to finish (back) | Falling tiles, punching walls and finish |
+|---|---|
+| ![Course overview](Docs/Images/course.jpg) | ![Finish area](Docs/Images/finish.jpg) |
+
 ---
 
 ## 5. Build the game
@@ -116,6 +126,7 @@ FallGuyClone/
 │   │       ├── Obstacles/         Moving obstacles, hazards and triggers
 │   │       └── UI/                HUD and menus
 │   └── Settings/                  URP render settings and Input System actions
+├── Docs/Images/                   Screenshots and GIF used in this README
 ├── Packages/                      Unity package list (manifest.json)
 ├── ProjectSettings/               Unity project settings
 └── README.md
